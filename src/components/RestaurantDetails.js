@@ -1,31 +1,39 @@
 import React from 'react';
-import {useState,useEffect} from 'react';
 import {useParams} from 'react-router-dom';
-import useRestaurant from './useRestaurant';
-// import {MENU_ITEM_TYPE_KEY, RESTAURANT_TYPE_KEY} from '../constants'
+import useRestaurant from './utils/useRestaurant';
+import { IMG_CDN_URL } from '../constants';
+import { addItem } from './utils/cartSlice';
+import { useDispatch } from 'react-redux';
 
 const RestaurantDetails= ()=> {
     const resId=useParams();
-    // const[restaurant,setRestaurant]=useState(null);
-    // const[menuitems,setMenuItems]=useState([]);
-
     //customHooks
     const restaurant=useRestaurant(resId);
 
-
+   const dispatch= useDispatch();
+   const addFoodItem=(item)=>{
+    dispatch(addItem(item));
+   }
 
   return (
     <div className='flex'>
         <div>
-       <h1>{restaurant[0]?.name}</h1>
-       <img alt="restaurant pic" src={
-          "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" +
-          restaurant[0]?.cloudinaryImageId
-        }/>
+        <h2>{restaurant[0]?.name}</h2>
+        <img src={IMG_CDN_URL + restaurant[0]?.cloudinaryImageId} />
+        <h3>{restaurant[0]?.area}</h3>
         </div>
-       <ul>{restaurant[1]?.map(item=>{
+       <ul>{restaurant[1]?.map((item)=>{
         return(
-            <li key={item}>{item}</li>
+          <li key={item.id}>
+          {item.name} -{" "}
+          <button
+            data-testid="addBtn"
+            className="p-1 bg-green-50"
+            onClick={() => addFoodItem(item)}
+          >
+            Add
+          </button>
+        </li>
         )
        })}</ul>
     </div>

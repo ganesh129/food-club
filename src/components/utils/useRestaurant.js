@@ -1,5 +1,5 @@
 import { useState,useEffect } from "react";
-import {MENU_ITEM_TYPE_KEY, RESTAURANT_TYPE_KEY} from '../constants'
+import {MENU_ITEM_TYPE_KEY, RESTAURANT_TYPE_KEY} from '../../constants'
 
 
 const useRestaurant=(resId)=>{
@@ -25,7 +25,7 @@ async function getRestaurantDetail(){
    const restaurantMenu=menu.map(x=>x?.card?.card)?.filter(x=>x['@type']===MENU_ITEM_TYPE_KEY)?.map(x=>x.itemCards)?.flat()?.map(x=>x?.card?.info);
    const uniqueMenuItems=[];
    restaurantMenu.forEach(item=>{
-    uniqueMenuItems.push(item.name);
+    uniqueMenuItems.push(item);
    })
    setMenuItems(uniqueMenuItems)
 };

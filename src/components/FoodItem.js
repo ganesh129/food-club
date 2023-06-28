@@ -1,13 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { IMG_CDN_URL } from "../constants";
+import { ITEM_IMG_CDN_URL } from "../constants";
 // import { useContext } from "react";
 // import UserContext from "../utils/UserContext";
 
-const RestaurantCard = ({
+const FoodItem = ({
   name,
-  cloudinaryImageId,
-  cuisines,
+  imageId,
   lastMileTravelString,
   costForTwoString,
   avgRating,
@@ -16,9 +15,9 @@ const RestaurantCard = ({
   return (
     <div className=" p-4 w-72  ">
       <div>
-        <img src={IMG_CDN_URL + cloudinaryImageId} />
+        <img src={ITEM_IMG_CDN_URL + imageId} />
         <div className="pt-3 text-lg font-bold">{name}</div>
-        <p className="text-lg text-gray-900 py-3">{cuisines.join(", ")}</p>
+        {/* <p className="text-lg text-gray-900 py-3">{cuisines.join(", ")}</p> */}
         <div className="flex justify-between font-bold">
           <span
             className={
@@ -41,4 +40,4 @@ const RestaurantCard = ({
   );
 };
 
-export default RestaurantCard;
+export default FoodItem;

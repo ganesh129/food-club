@@ -1,9 +1,10 @@
 import React from 'react';
-import { useState,useEffect } from "react";
+import { useState,useEffect,useContext } from "react";
 // import {restaurantList} from '../constants';
 import RestaurantList from "./RestaurantList";
 // import RestaurantCardShimmer from './RestaurantCardShimmer';
-import useOnline from './useOnline';
+import useOnline from './utils/useOnline';
+import UserContext from './utils/UserContext';
 
 function filterRestaurantList(restaurants,searchTxt){
     const filterdata= restaurants.filter((x)=>x.data.name.toLowerCase().includes(searchTxt.toLowerCase()));
@@ -16,6 +17,11 @@ const Body=()=>{
     const[searchText,setSearchText]= useState("");
     const[allRestaurant,setAllRestaurant]=useState([]);
     const[filteredRestaurant,setFilteredRestaurant]=useState([]);
+
+    //Context
+    const {user,setUser}= useContext(UserContext);
+    
+
 
    //useEffect
    useEffect(()=>{getRestaurants()},
@@ -54,6 +60,17 @@ const Body=()=>{
              }
              }>
             search</button>
+            <input
+            className='p-2 m-2'
+             type="text"
+             value={user.name}
+             onChange={(e)=>{
+                    setUser({
+                        name:e.target.value,
+                        email:""});
+             }}
+            >
+            </input>
         </div>
         <RestaurantList  allRestaurant={allRestaurant} restaurantlist={filteredRestaurant}/>   
         </>

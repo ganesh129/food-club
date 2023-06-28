@@ -8,7 +8,7 @@ const RestaurantList=(props)=>{
             {props.restaurantlist.length===0?<h1>No Restaurant Found</h1>:
                 props.restaurantlist.map((restaurant)=>
                 {
-                   return <Link to={"/restaurant/"+restaurant.data.id}><RestaurantCard key={restaurant.data.id} {...restaurant.data}/></Link>
+                   return <Link key={restaurant.data.id} to={"/restaurant/"+restaurant.data.id}><RestaurantCard key={restaurant.data.id} {...restaurant.data}/></Link>
                 }
                 
                 )}

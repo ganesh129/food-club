@@ -1,8 +1,17 @@
-import React from 'react';
+import React,{useState,useContext} from 'react';
 import logo from '../FoodFireLogo.png';
 import {Link} from 'react-router-dom';
+import UserContext from './utils/UserContext';
+import { useSelector } from 'react-redux';
+// import cart from './cart';
 
 const Header=()=>{
+    const[isLoggedIn,setIsLoggedIn]=useState(false);
+
+    const {user} = useContext(UserContext);
+
+    const cartItems = useSelector(store=> store.cart.items);
+
      return(
             <div className='flex justify-between bg-pink-50 shadow-lg'>
                 <div>
@@ -16,11 +25,28 @@ const Header=()=>{
                     <Link to='/contact'>Contact</Link> 
                 </li>
                 <li className='px-2'>
-                    <Link to="/login">LogIn</Link>
+                    <Link to="/instamart">Instamart</Link>
                 </li>
-                <li className='px-2'>Sign Up</li>
+                <li className="px-2">
+                <h2>
+                    <Link to="/cart">
+                        cart {cartItems.length} items
+                </Link></h2>
+                </li>
                 </ul>
-                <h2 className='py-10 pr-3'>cart</h2>
+                {
+                    isLoggedIn?
+                    <Link>
+                        <button className='px-2 m-5' onClick={()=>setIsLoggedIn(false)}>LogOut</button>
+                    </Link>
+                :  <li className='px-2 mx-10'>
+                    <Link to="/logIn" className='flex'>
+                        <button onClick={()=>setIsLoggedIn(true)}>LogIn</button>
+                        <p className='px-2'>{user.name}</p>
+                    </Link>
+                </li>
+                }
+
             </div>
      )
 }
