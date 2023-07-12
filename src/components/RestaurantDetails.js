@@ -1,5 +1,5 @@
 import React from 'react';
-import {useParams} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import useRestaurant from './utils/useRestaurant';
 import { IMG_CDN_URL } from '../constants';
 import { addItem } from './utils/cartSlice';

@@ -1,3 +1,4 @@
+import React from 'react';
 import RestaurantCard from './RestaurantCard';
 import RestaurantCardShimmer from './RestaurantCardShimmer';
 import { Link } from 'react-router-dom';

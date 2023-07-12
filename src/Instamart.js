@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState } from "react";
 
 const Section = ({ title, description, isVisible, setIsVisible }) => {
