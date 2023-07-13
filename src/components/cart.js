@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import FoodItem from "./FoodItem";
-import { clearCart, removeItem } from "./utils/cartSlice";
+import { clearCart} from "./utils/cartSlice";
 
 const Cart =()=> {
    const cartItems= useSelector((store)=>store.cart.items);

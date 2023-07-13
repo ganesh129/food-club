@@ -17,13 +17,13 @@ const RestaurantCard = ({
   return (
     <div className=" p-4 w-72  ">
       <div>
-        <img src={IMG_CDN_URL + cloudinaryImageId} />
+        <img alt="restaurant card" src={IMG_CDN_URL + cloudinaryImageId} />
         <div className="pt-3 text-lg font-bold">{name}</div>
         <p className="text-lg text-gray-900 py-3">{cuisines.join(", ")}</p>
         <div className="flex justify-between font-bold">
           <span
             className={
-              (avgRating < 3.7 || avgRating == "--"
+              (avgRating < 3.7 || avgRating === "--"
                 ? "bg-orange-500"
                 : "bg-green-500") +
               " " +
