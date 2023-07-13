@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import { useState,useEffect,useContext } from "react";
 // import {restaurantList} from '../constants';
 import RestaurantList from "./RestaurantList";
@@ -28,11 +29,21 @@ const Body=()=>{
    []);
    
    async function getRestaurants(){
-    const data=await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9621948&lng=77.7115841&page_type=DESKTOP_WEB_LISTING");
-    const json=await data.json();
-    const list=json?.data?.cards[2]?.data?.data?.cards;
-    setAllRestaurant(list);
-    setFilteredRestaurant(list);
+      try {
+        const response = await fetch("https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9621948&lng=77.7115841&page_type=DESKTOP_WEB_LISTING");
+          // if response is not ok then throw new Error
+        if (!response.ok) {
+          const err = response.status;
+          throw new Error(err);
+        } else {
+          const json = await response.json();
+          // updated state variable restaurants with Swiggy API data
+          setAllRestaurant(json?.data?.cards[2]?.data?.data?.cards);
+          setFilteredRestaurant(json?.data?.cards[2]?.data?.data?.cards);
+        }
+      } catch (error) {
+        console.error(error); // show error in console
+      }
    };
 
    // online or offlines

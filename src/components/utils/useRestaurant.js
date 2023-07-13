@@ -13,7 +13,7 @@ useEffect(()=>{
 
 
 async function getRestaurantDetail(){
-   const data=await fetch(`https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9621948&lng=77.7115841&restaurantId=${resId.id}&submitAction=ENTER`);
+   const data=await fetch(`https://corsproxy.io/?https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9621948&lng=77.7115841&restaurantId=${resId.id}&submitAction=ENTER`);
    const json=await data.json();
    //set restaurant data
    const restaurantData = json?.data?.cards?.map(x => x.card)?.
