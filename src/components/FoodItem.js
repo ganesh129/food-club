@@ -16,13 +16,13 @@ const FoodItem = ({
   return (
     <div className=" p-4 w-72  ">
       <div>
-        <img src={ITEM_IMG_CDN_URL + imageId} />
+        <img alt="food item pic" src={ITEM_IMG_CDN_URL + imageId} />
         <div className="pt-3 text-lg font-bold">{name}</div>
         {/* <p className="text-lg text-gray-900 py-3">{cuisines.join(", ")}</p> */}
         <div className="flex justify-between font-bold">
           <span
             className={
-              (avgRating < 3.7 || avgRating == "--"
+              (avgRating < 3.7 || avgRating === "--"
                 ? "bg-orange-500"
                 : "bg-green-500") +
               " " +
@@ -34,8 +34,6 @@ const FoodItem = ({
           <span>{lastMileTravelString}</span>
           <span>{costForTwoString}</span>
         </div>
-        {/* <span>{user.name}</span>
-        <span>{user.email}</span> */}
       </div>
     </div>
   );

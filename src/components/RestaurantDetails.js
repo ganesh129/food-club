@@ -19,7 +19,7 @@ const RestaurantDetails= ()=> {
     <div className='flex'>
         <div>
         <h2>{restaurant[0]?.name}</h2>
-        <img src={IMG_CDN_URL + restaurant[0]?.cloudinaryImageId} />
+        <img alt="restaurant pic"src={IMG_CDN_URL + restaurant[0]?.cloudinaryImageId} />
         <h3>{restaurant[0]?.area}</h3>
         </div>
        <ul>{restaurant[1]?.map((item)=>{

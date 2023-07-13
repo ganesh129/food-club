@@ -1,4 +1,4 @@
-import React, { Suspense, fallback, useState,useContext} from 'react';
+import React, { Suspense, useState} from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import Header from './components/Header';
