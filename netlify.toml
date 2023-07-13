@@ -9,5 +9,5 @@
 
 [[headers]]
 for = "/*"
-[headers.values]
+to = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9621948&lng=77.7115841&page_type=DESKTOP_WEB_LISTING"
 Access-Control-Allow-Origin = "*"
