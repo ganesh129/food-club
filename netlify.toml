@@ -3,8 +3,8 @@
   publish = "build/"
 
 [[redirects]]
-  from = “/api/*”
-  to = “https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9621948&lng=77.7115841&page_type=DESKTOP_WEB_LISTING/:splat"
+  from ="/api/*"
+  to = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9621948&lng=77.7115841&page_type=DESKTOP_WEB_LISTING/:splat"
   status = 200
 
 [[redirects]]
