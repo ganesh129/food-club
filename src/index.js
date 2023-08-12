@@ -11,10 +11,15 @@ import Body from './components/Body';
 import Cart from './components/cart';
 import Error from './components/Error';
 import RestaurantDetails from './components/RestaurantDetails';
-import LoginPage from './components/Login';
+import Login from './components/Login';
 import UserContext from './components/utils/UserContext';
 import { Provider } from 'react-redux';
 import store from './components/utils/store';
+import '@fortawesome/fontawesome-free/css/fontawesome.css';
+import '@fortawesome/fontawesome-free/css/solid.css';
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import Register from './components/Register';
+
 
 const Instamart = React.lazy(()=> import('./Instamart'));
 
@@ -64,7 +69,11 @@ const AppRouter=createBrowserRouter([
       },
       {
         path:"/login",
-        element: <LoginPage/>
+        element: <Login/>
+      },
+      {
+        path:"/register",
+        element: <Register/>
       },
       {
         path:"/restaurant/:id",
@@ -88,7 +97,9 @@ const AppRouter=createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  <GoogleOAuthProvider clientId='65943690193-ablppklf03r45e4jjkmf0es4opstces7.apps.googleusercontent.com'>
   <RouterProvider router={AppRouter}/>
+  </GoogleOAuthProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
